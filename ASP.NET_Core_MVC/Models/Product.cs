@@ -8,6 +8,7 @@
         public double CategoryID { get; set; }
         public bool OnSale { get; set; }
         public string StockLevel { get; set; }
+        public IEnumerable<Category> Categories { get; set; }
 
 
     }
