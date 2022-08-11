@@ -1,7 +1,22 @@
+using ASP.NET_Core_MVC;
+using MySql.Data.MySqlClient;
+using Microsoft.Extensions.Configuration;
+using System.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IDbConnection>((s) =>
+{
+    IDbConnection conn = new MySqlConnection(builder.Configuration.GetConnectionString("bestbuy"));
+    conn.Open();
+    return conn;
+});
+
+builder.Services.AddTransient<IProductRepository, ProductRepository>();
+
 
 var app = builder.Build();
 
