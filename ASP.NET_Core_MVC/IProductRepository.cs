@@ -14,6 +14,7 @@ namespace ASP.NET_Core_MVC
 
         public Product AssignCategory();
 
+        public void DeleteProduct(Product product);
 
 
     }
